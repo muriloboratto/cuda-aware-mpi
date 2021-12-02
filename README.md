@@ -1,78 +1,28 @@
+# Sample Codes using CUDA-AWARE MPI on Multi-GPU Environments
 
+In most parallel applications it is necessary to carry out communication operations involving multiple computational resources. These communication operations can be implemented through point-to-point operations, however, this approach is not very efficient for the programmer. Parallel and distributed solutions based on collective operations have long been the main choice for these applications. The MPI standard has a set of very efficient routines that perform collective operations, making better use of the computing capacity of available computational resources. Also, with the advent of new computational resources, similar routines appear for multi-GPU systems. This repository will cover the handling of NCCL routines for multi-GPU environments, always comparing them with the MPI standard, showing the differences and similarities between the two computational execution environments.
 
-<br />
-<p align="center">
-    <img src="capa_livro_metodos.png" alt="Capa" width="280" height="340">
-  <h3 align="center">Livro de Métodos Numéricos e Computacionais</h3>
+----
+## What is CUDA-AWARE MPI?
+see [NVIDIA](https://developer.nvidia.com/blog/introduction-cuda-aware-mpi/)
 
-  <p align="center">
-    Aplicados às Ciências e às Engenharias
-    <br />
-  </p>
-</p>
+> CUDA-Aware MPI is a implementation must handle buffers differently depending on whether it resides in host or device memory. An MPI implementation could offer different APIs for host and device buffers, or it could add an additional argument indicating where the passed buffer lives. MPI, the Message Passing Interface, is a standard API for communicating data via messages between distributed processes that is commonly used in HPC to build applications that can scale to multi-node computer clusters. As such, MPI is fully compatible with CUDA, which is designed for parallel computing on a single computer or node.
+----
 
+## Why Parallel Programming approaches of MPI and CUDA?
 
-<details open="open">
-  <summary>Conteúdo</summary>
-  <ol>
-    <li>
-      <a href="#link1">CONCEITOS BÁSICOS RELACIONADOS AOS MÉTODOS NUMÉRICOS</a>
-    </li>
-    <li>
-      <a href="#link2">RESOLUÇÃO NUMÉRICA DE SISTEMAS DE EQUAÇÕES LINEARES</a> 
-     <ul>
-        <li><a href="#1">Resolução de Sistemas Triangulares</a></li>
-        <li><a href="#2">Gauss Jordan</a></li>
-        <li><a href="#2">Jacobi</a></li>
-        <li><a href="#2">Gauss Siedel</a></li>
-      </ul>
-    </li>
-    <li><a href="#link3">INTERPOLAÇÃO NUMÉRICA</a></li>
-    <ul>
-        <li><a href="#1">Lagrange</a></li>
-        <li><a href="#2">Newton</a></li>
-      </ul>
-    <li><a href="#link4">ZEROS DA FUNÇÃO</a></li>
-    <ul>
-        <li><a href="#1">Bisseção</a></li>
-        <li><a href="#2">Ponto Fixo</a></li>
-        <li><a href="#2">Newthon Rapshon</a></li>
-        <li><a href="#2">Secante</a></li>
-      </ul>
-    <li><a href="#link5">INTEGRAÇÃO NUMÉRICA</a></li>
-      <ul>
-        <li><a href="#1">Simpson</a></li>
-        <li><a href="#2">Trapezios</a></li>
-        <li><a href="#1">Gauss</a></li>        
-      </ul>
-    <li><a href="#link6">RESOLUÇÃO NUMÉRICA DE SISTEMAS DE EQUAÇÕES NÃO LINEARES</a></li>
-      <ul>
-        <li><a href="#1">Newthon Rapshon Modificado</a></li>
-       </ul>
-    <li><a href="#link7">RESOLUÇÃO NUMÉRICA DE EQUAÇÕES DIFERENCIAIS ORDINÁRIAS</a></li>
-      <ul>
-        <li><a href="#1">Euler</a></li>
-        <li><a href="#2">Runger-Kutta</a></li>     
-      </ul>
-    <li><a href="#link8">PRINCÍPIOS DE OTIMIZAÇÃO</a></li>
-      <ul>
-        <li><a href="#1">5 pontos</a></li>
-        <li><a href="#2">Dicótoma</a></li>
-        <li><a href="#2">Fibonacci</a></li>
-        <li><a href="#2">Secção Áurea</a></li>
-      </ul>
-  </ol>
-</details>
+There are a number of reasons for wanting to combine the complementary parallel programming approaches of MPI and CUDA:
 
-## Sobre este Livro
+* To solve problems with a data size too large to fit into the memory of a single GPU;
+* To solve problems that would require unreasonably long compute time on a single node;
+* To accelerate an existing MPI application with GPUs;
+* To enable a single-node multi-GPU application to scale across multiple nodes.
 
-Ministrando disciplinas relacionadas a métodos numéricos ao longo de 10 anos, há pouco tempo algumas perguntas começaram a permear os meus pensamentos, por exemplo: “por que escrever um livro de métodos numéricos?”. Consequentemente vieram outras perguntas como: “por que escrever um livro de métodos numéricos sendo que já existem tantos?”. “Como seria possível escrever um livro de métodos numéricos diferente?”. E talvez a resposta estivesse no desejo de transmitir as experiências pessoais, na espera de que elas fossem úteis para alguém. Como as disciplinas relacionadas a métodos numéricos, em sua grande maioria, esquecem-se do esforço de vincu- lação dos conceitos teóricos à aplicação prática nas ciências aplicadas, este texto tem o orgulho de desmistificar uma visão “demasiadamente teórica” em detrimento da aplicabilidade desses conceitos.
+----
 
-Este livro-guia mescla minhas experiências nas disciplinas ministradas ao longo da minha docência universitária e das minhas práticas discentes experimentadas nos cursos de graduação e pós-graduação realizados durante a minha carreira acadêmica. Tentei apresentar um texto claro e objetivo, evitando sempre que possível a notação matemática carregada, na tentativa de generalizar o público alvo. Múltiplos exemplos de algoritmos foram incluídos nos capítulos a fim de permitir uma programação rápida dos métodos propostos. Compartilho com todos os estudantes, profissionais e pesquisadores das ciências exatas as diversas visões práticas dos métodos numéricos. A seguir alguns códigos fontes implementados principalmente na linguagem de programação python para as soluções de alguns exercícios contidos neste livro.
+## Implementations Available for CUDA-AWARE MPI:
 
+CUDA-AWARE requires at least CUDA 7.0 and Kepler or newer GPUs. For NVLINK based platforms, best performance is achieved when all GPUs are located on a common PCIe root complex, but multi-socket configurations are also supported. There are several commercial and open-source CUDA-aware MPI implementations available:
 
-<!-- ACKNOWLEDGEMENTS -->
-## Agradecimentos
-* [Editora Appris](http://www.editoraappris.com.br)
-* [Centro de Supercomputação para Inovação Industrial SENAI CIMATEC (CS2I)](http://www.fieb.org.br)
-* [Universidade do Estado da Bahia (UNEB)](http://www.uneb.br)
+* [MVAPICH2 1.8/1.9b](http://mvapich.cse.ohio-state.edu/)
+* [OpenMPI 1.7 (beta)](http://www.open-mpi.org/)
