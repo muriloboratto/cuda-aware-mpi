@@ -28,7 +28,7 @@ There are a number of reasons for wanting to combine the complementary parallel 
 
 ----
 
-## Implementations Available for CUDA-AWARE MPI:
+## Implementations Available for CUDA-AWARE MPI
 
 CUDA-AWARE requires at least CUDA 7.0 and Kepler or newer GPUs. For NVLINK based platforms, best performance is achieved when all GPUs are located on a common PCIe root complex, but multi-socket configurations are also supported. There are several commercial and open-source CUDA-aware MPI implementations available:
 
