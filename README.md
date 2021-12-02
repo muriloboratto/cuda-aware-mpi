@@ -4,7 +4,7 @@ In most parallel applications it is necessary to carry out communication operati
 
 <br />
 <p align="center">
-    <img src="architecture_multi_gpu.png" alt="Capa" width="280" height="340">  
+    <img src="architecture_multi_gpu.png" alt="architecture" width="580" height="440">  
 <p align="center">
     <br />
   </p>
