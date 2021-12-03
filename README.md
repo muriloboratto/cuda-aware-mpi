@@ -28,9 +28,74 @@ There are a number of reasons for wanting to combine the complementary parallel 
 
 ----
 
-## Implementations Available for CUDA-AWARE MPI
+## How to Install the CUDA-AWARE MPI
 
-CUDA-AWARE requires at least CUDA 7.0 and Kepler or newer GPUs. For NVLINK based platforms, best performance is achieved when all GPUs are located on a common PCIe root complex, but multi-socket configurations are also supported. There are several commercial and open-source CUDA-aware MPI implementations available:
+1. Verify if CUDA is available 
 
-* [MVAPICH2 1.8/1.9b](http://mvapich.cse.ohio-state.edu/)
-* [OpenMPI 1.7 (beta)](http://www.open-mpi.org/)
+> ~$ nvcc --version 
+
+2. Install the Package NVIDIA GDRCopy  
+
+> ~$ wget https://github.com/NVIDIA/gdrcopy/archive/refs/tags/v2.3.tar.gz
+    
+> ~$ tar -xf v2.3.tar.gz
+
+> ~$ make prefix=<install-to-this-location> CUDA=<cuda-install-top-dir> all install
+
+> ~$ sudo ./insmod.sh
+
+
+3. Install the UCX 
+
+> ~$ wget https://github.com/openucx/ucx/archive/master.zip
+
+> ~$ unzip master.zip 
+
+> ~$ ./configure --prefix=path-to-install-dir --disable-assertions --disable-debug --disable-doxygen-doc --disable-logging --disable-params-check --enable-mt --enable-optimizations --with-cuda=path-to-cuda --with-gdrcopy=path-to-gdrcopy --with-knem=path-to-knem-melanox --with-rdmacm --with-verbs
+
+> ~$ make -j number-of-processors 
+
+> ~$ make -j number-of-processors install 
+
+
+4. Install OpenMPI
+
+> ~$ wget https://download.open-mpi.org/release/open-mpi/v4.1/openmpi-4.1.2.tar.gz
+
+> ~$ tar -xf openmpi-4.1.2.tar.gz
+
+> ~$ ./configure --prefix=/opt/share/openmpi/4.0.5-cuda/  --disable-getpwuid --enable-mca-no-build=btl-uct  --enable-orterun-prefix-by-default' --with-cuda=path-to-cuda --with-pmi --with-pmix=internal  --with-ucx=path-to-ucx --with-verbs  --with-knem=path-to-knem-melanox
+
+
+5. Check Environment infiniBand
+
+> ~$ lspci | grep Mellanox
+
+> ~$ ibstat
+
+> ~$ ibstatus
+
+
+
+   * Check if the library was built with CUDA-aware support:
+    > ~$ ompi_info --parsable --all | grep mpi_built_with_cuda_support:value mca:mpi:base:param:mpi_built_with_cuda_support:value:true
+
+   * See if you have GPUDirect RDMA compiled into your library, you can check like this:
+    > ~$ ompi_info --all | grep btl_openib_have_cuda_gdr MCA btl: informational "btl_openib_have_cuda_gdr" (current value: "true", data source: default, level: 4 tuner/basic, type: bool)
+
+   * See if your OFED stack has GPUDirect RDMA support, you can check like this:
+    > ~$ ompi_info --all | grep btl_openib_have_driver_gdr
+
+   * Check the UCX CUDA Support 
+    > ~$ ucx_info -b
+    > ~$ ucx_info -b | grep CUDA
+    > ~$ ucx_info -b | grep MLX
+    > ~$ ucx_info -c
+    > ~$ ucx_info -c | grep CUDA
+
+
+----
+## Acknowledgements
+
+This work has been partially supported by NVIDIA Hardware Grant Program, and I have also worked in cooperation with the researcher [Silvano Júnior](silvano.junior@fieb.org.br).
+    
