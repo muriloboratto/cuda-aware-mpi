@@ -78,15 +78,19 @@ There are a number of reasons for wanting to combine the complementary parallel 
 
 
    * Check if the library was built with CUDA-aware support:
+    
     > ~$ ompi_info --parsable --all | grep mpi_built_with_cuda_support:value mca:mpi:base:param:mpi_built_with_cuda_support:value:true
 
    * See if you have GPUDirect RDMA compiled into your library, you can check like this:
+    
     > ~$ ompi_info --all | grep btl_openib_have_cuda_gdr MCA btl: informational "btl_openib_have_cuda_gdr" (current value: "true", data source: default, level: 4 tuner/basic, type: bool)
 
    * See if your OFED stack has GPUDirect RDMA support, you can check like this:
+    
     > ~$ ompi_info --all | grep btl_openib_have_driver_gdr
 
    * Check the UCX CUDA Support 
+    
     > ~$ ucx_info -b
     > ~$ ucx_info -b | grep CUDA
     > ~$ ucx_info -b | grep MLX
