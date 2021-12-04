@@ -91,11 +91,15 @@ There are a number of reasons for wanting to combine the complementary parallel 
 
    * Check the UCX CUDA Support 
     
-      ~$ ucx_info -b
-      ~$ ucx_info -b | grep CUDA
-      ~$ ucx_info -b | grep MLX
-      ~$ ucx_info -c
-      ~$ ucx_info -c | grep CUDA
+     > ~$ ucx_info -b
+    
+     > ~$ ucx_info -b | grep CUDA
+    
+     > ~$ ucx_info -b | grep MLX
+    
+     > ~$ ucx_info -c
+    
+     > ~$ ucx_info -c | grep CUDA
 
 
 ----
