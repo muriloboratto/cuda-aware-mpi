@@ -1,1 +1,0 @@
-nvcc -I/opt/share/openmpi/4.0.5-cuda/include -L/opt/share/openmpi/4.0.5-cuda/lib64 -lmpi -Xcompiler -fopenmp -o cuda-aware-mpi-laplacian cuda-aware-mpi-laplacian.cu

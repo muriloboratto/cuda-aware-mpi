@@ -14,10 +14,10 @@
 %    Silvano Júnior <silvano.junior 'at' fieb.org.br>:
 %
 %  How to Compile:
-%   bash howtocompile.sh
+%   nvcc -I/usr/include/openmpi -L/usr/lib/openmpi -lmpi -Xcompiler -fopenmp -o cuda-aware-mpi-memcpy cuda-aware-mpi-memcpy.cu 
 %
 %  Execute: 
-%   bash howtorun.sh
+%   mpirun -np 2 ./cuda-aware-mpi-memcpy
 %
 %****************************************************************************80*/
 
@@ -52,7 +52,7 @@ int main(int argc, char **argv){
     float *buffer_d2 =  (float*) malloc (size_buffer);
     float *buffer_d3 =  (float*) malloc (size_buffer);
 
-    if(rank==0){
+    if(rank == 0){
 
         cudaSetDevice(0);    
         cudaMalloc((void **) &buffer_d, size_buffer);
@@ -66,7 +66,7 @@ int main(int argc, char **argv){
         cudaSetDevice(3);
         cudaMalloc((void **) &buffer_d3, size_buffer);
 
-        for(int i=0; i<N; i++)
+        for(int i = 0; i < N; i++)
             buffer_h[i] = i; 
     
         cudaSetDevice(0);
@@ -76,7 +76,7 @@ int main(int argc, char **argv){
     
     start = MPI_Wtime();
 
-    for(int i=0; i<1000; i++){
+    for(int i = 0; i < 1000; i++){
         if(rank == 0){
             for(int count = 1; count < size; count++){
                 cudaSetDevice(0); /*Send CUDA Buffer*/
@@ -110,10 +110,10 @@ int main(int argc, char **argv){
     cudaMemcpy(buffer_h2, buffer_d1, size_buffer, cudaMemcpyDeviceToHost);
     cudaMemcpy(buffer_h3, buffer_d1, size_buffer, cudaMemcpyDeviceToHost);
     
-    printf("Time: %f - rank %d, buffer %f \n ", time, rank, buffer_h[N-1]);
-    printf("Time: %f - rank %d, buffer %f \n ", time, rank, buffer_h1[N-1]);
-    printf("Time: %f - rank %d, buffer %f \n ", time, rank, buffer_h2[N-1]);
-    printf("Time: %f - rank %d, buffer %f \n ", time, rank, buffer_h3[N-1]);
+    printf("Time: %f - rank %d, buffer %f\n ", time, rank, buffer_h[N-1]);
+    printf("Time: %f - rank %d, buffer %f\n ", time, rank, buffer_h1[N-1]);
+    printf("Time: %f - rank %d, buffer %f\n ", time, rank, buffer_h2[N-1]);
+    printf("Time: %f - rank %d, buffer %f\n ", time, rank, buffer_h3[N-1]);
     
     free(buffer_h); 
     free(buffer_h1); 
