@@ -1,1 +1,0 @@
-nvcc -I/usr/include/openmpi -L/usr/lib/openmpi -lmpi -Xcompiler -fopenmp -o $1 $1.cu 
