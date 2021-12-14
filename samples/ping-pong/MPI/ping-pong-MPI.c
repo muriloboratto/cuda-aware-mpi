@@ -79,7 +79,7 @@ int main(int argc, char *argv[]){
         double avg_time_per_transfer = elapsed_time / (2.0*(double)loop_count);
 
         if(rank == 0) 
-            printf("Transfer size (Bites): %10li, Transfer Time (seconds): %15.9f, Bandwidth (GB/s): %15.9f\n", 
+            printf("Transfer size (Bytes): %10li, Transfer Time (seconds): %15.9f, Bandwidth (GB/s): %15.9f\n", 
                    num_B, avg_time_per_transfer, num_GB/avg_time_per_transfer );  
 
         free(A);
