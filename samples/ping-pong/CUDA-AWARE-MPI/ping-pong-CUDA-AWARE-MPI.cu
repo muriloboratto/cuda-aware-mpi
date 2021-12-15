@@ -4,7 +4,7 @@
 %
 %  Purpose:
 %   Implements the ping pong between 2 ranks using CUDA-AWARE-MPI.
-%   The code allocate memory between 2 GPUs using GPU direct.
+%   The code allocate memory between 2 GPUs using GPU direct or NVLINK.
 %
 %  Modified:
 %   Dec 12 2021 10:57 
@@ -16,11 +16,11 @@
 %   Murilo Boratto <murilo.boratto 'at' fieb.org.br>
 %
 %  HowtoCompile in nowherman:
-%   
+%   nvcc -I/usr/include/openmpi -L/usr/lib/openmpi -lmpi -Xcompiler -fopenmp -o ping-pong-MPI-CUDA ping-pong-MPI-CUDA.cu
 %
 %  HowtoExecute in nowherman: 
+%   mpirun -np 2 ./ping-pong-MPI-CUDA
 %   
-%
 %****************************************************************************80*/
 
 #include <stdio.h>
@@ -45,7 +45,7 @@ int main(int argc, char *argv[]){
 
     for(int i = 0; i <= 27; i++){
 
-        long int N = 1 << i; /*Loop from 8 Bites to 1 GB*/
+        long int N = 1 << i; /*Loop from 8 Bytes to 1 GB*/
    
         double *A = (double*)calloc(N, sizeof(double)); /*Allocate memory for A on CPU*/
 

@@ -42,7 +42,7 @@ int main(int argc, char *argv[]){
        
     for(int i = 0; i <= 27; i++) {
 
-       long int N = 1 << i; /*Loop from 8 Bites to 1 GB*/
+       long int N = 1 << i; /*Loop from 8 Bytes to 1 GB*/
 
        double *A = (double*)calloc( N, sizeof(double));  /*Allocate memory for A on CPU*/
 
