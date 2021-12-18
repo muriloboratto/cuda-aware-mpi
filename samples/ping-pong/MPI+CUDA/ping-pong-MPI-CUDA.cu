@@ -15,11 +15,13 @@
 %  Modified:
 %   Murilo Boratto <murilo.boratto 'at' fieb.org.br>
 %
-%  HowtoCompile in nowherman:
-%   nvcc -I/usr/include/openmpi -L/usr/lib/openmpi -lmpi -Xcompiler -fopenmp -o ping-pong-MPI-CUDA ping-pong-MPI-CUDA.cu
+%  HowtoCompile:
+%   bash howtocompile.sh <supercomputer: nowherman | ogbon >
+%   bash howtocompile.sh ogbon
 %
 %  HowtoExecute in nowherman: 
-%   mpirun -np 2 ./ping-pong-MPI-CUDA
+%   bash howtoexecute.sh <supercomputer: nowherman | ogbon >
+%   bash howtoexecute.sh ogbon
 %
 %****************************************************************************80*/
 

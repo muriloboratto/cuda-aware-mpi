@@ -15,11 +15,13 @@
 %  Modified:
 %   Murilo Boratto <murilo.boratto 'at' fieb.org.br>
 %
-%  HowtoCompile in nowherman:
-%   mpicc ping-pong-MPI.c -o ping-pong-MPI 
+%  HowtoCompile:
+%   bash howtocompile.sh <supercomputer: nowherman | ogbon >
+%   bash howtocompile.sh ogbon
 %
 %  HowtoExecute in nowherman: 
-%   mpirun -np 2 ./ping-pong-MPI
+%   bash howtoexecute.sh <supercomputer: nowherman | ogbon >
+%   bash howtoexecute.sh ogbon
 %
 %****************************************************************************80*/
 
