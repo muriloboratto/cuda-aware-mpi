@@ -27,7 +27,7 @@ ogbon()
 
 
 #args in comand line
-if [ "$#" ==  1 ]; then
+if [ "$#" ==  0 ]; then
  usage
  exit
 fi

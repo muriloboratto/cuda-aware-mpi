@@ -25,7 +25,7 @@ mpirun -np 2 -x UCX_MEMTYPE_CACHE=n  -mca pml ucx -mca btl ^vader,tcp,openib,smc
 }
 
 #args in comand line
-if [ "$#" ==  1 ]; then
+if [ "$#" ==  0 ]; then
  usage
  exit
 fi
