@@ -30,7 +30,7 @@ if [ "$#" ==  0 ]; then
  exit
 fi
 
-#airis
+#nowherman
 if [[ $1 == "nowherman" ]];then
  nowherman
 fi
