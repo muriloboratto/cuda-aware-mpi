@@ -2,9 +2,9 @@
 
 usage()
 {
- echo "howtoexecute.sh: wrong number of input parameters. Exiting."
- echo -e "Usage: bash howtoexecute.sh <supercomputer>"
- echo -e "  g.e: bash howtoexecute.sh ogbon"
+ echo "howtocompile.sh: wrong number of input parameters. Exiting."
+ echo -e "Usage: bash howtocompile.sh <supercomputer>"
+ echo -e "  g.e: bash howtocompile.sh ogbon"
 }
 
 nowherman()

@@ -14,7 +14,6 @@ nowherman()
 
 ogbon()
 {
-
 #SBATCH --job-name=ping-pong-MPI-CUDA    # Job name
 #SBATCH --nodes=2                        # Run all processes on 2 nodes  
 #SBATCH --partition=GPUlongB             # partition OGBON

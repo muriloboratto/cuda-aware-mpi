@@ -19,7 +19,7 @@
 %   bash howtocompile.sh <supercomputer: nowherman | ogbon >
 %   bash howtocompile.sh ogbon
 %
-%  HowtoExecute in nowherman: 
+%  HowtoExecute: 
 %   bash howtoexecute.sh <supercomputer: nowherman | ogbon >
 %   bash howtoexecute.sh ogbon
 %
