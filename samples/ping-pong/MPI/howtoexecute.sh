@@ -16,6 +16,8 @@ nowherman()
 ogbon()
 {
 
+cat << EOF > slurm-MPI.sh
+
 #SBATCH --job-name=CUDA-AWARE-MPI              # Job name
 #SBATCH --nodes=2                              # Run all processes on 2 nodes  
 #SBATCH --partition=CPUlongB                   # Partition OGBON
@@ -26,6 +28,12 @@ ogbon()
 module load openmpi/4.1.1-cuda
 
 mpirun -np 2 -x UCX_MEMTYPE_CACHE=n  -mca pml ucx -mca btl ^vader,tcp,openib,smcuda -x UCX_NET_DEVICES=mlx5_0:1  ./ping-pong-CUDA-AWARE-MPI
+
+EOF
+
+sleep .1
+
+sbatch slurm-MPI.sh
 
 }
 
