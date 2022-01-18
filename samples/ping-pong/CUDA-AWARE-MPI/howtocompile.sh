@@ -15,7 +15,7 @@ nowherman()
 
 ogbon()
 {
- nvcc -I/opt/share/openmpi/4.1.0-cuda/include -L/opt/share/openmpi/4.1.0-cuda/lib64 -DprintLabel -lnccl -lmpi -Xcompiler -fopenmp ping-pong-CUDA-AWARE-MPI.cu -o ping-pong-CUDA-AWARE-MPI
+ nvcc -I/opt/share/openmpi/4.1.1-cuda/include -L/opt/share/openmpi/4.1.1-cuda/lib64 -DprintLabel -lnccl -lmpi -Xcompiler -fopenmp ping-pong-CUDA-AWARE-MPI.cu -o ping-pong-CUDA-AWARE-MPI
 }
 
 #args in comand line
