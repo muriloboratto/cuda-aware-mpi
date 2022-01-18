@@ -12,10 +12,10 @@ nowherman()
  mpirun -np 2 ./ping-pong-CUDA-AWARE-MPI
 }
 
-ogbon
+ogbon()
 {
 
-#SBATCH --job-name=ing-pong-CUDA-AWARE-MPI    # Job name
+#SBATCH --job-name=ping-pong-CUDA-AWARE-MPI    # Job name
 #SBATCH --nodes=2                             # Run all processes on 2 nodes  
 #SBATCH --partition=GPUlongB                  # partition OGBON
 #SBATCH --output=out_%j.log                   # Standard output and error log
