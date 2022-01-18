@@ -12,7 +12,7 @@ nowherman()
  mpirun -np 2 ./ping-pong-MPI-CUDA
 }
 
-ogbon
+ogbon()
 {
 
 #SBATCH --job-name=ping-pong-MPI-CUDA    # Job name

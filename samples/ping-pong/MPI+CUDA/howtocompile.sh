@@ -13,13 +13,13 @@ nowherman()
 }
 
 
-ogbon
+ogbon()
 {
  nvcc -I/opt/share/openmpi/4.1.0-cuda/include -L/opt/share/openmpi/4.1.0-cuda/lib64 -DprintLabel -lnccl -lmpi -Xcompiler -fopenmp -o ping-pong-MPI-CUDA ping-pong-MPI-CUDA.cu
 }
 
 #args in comand line
-if [ "$#" ==  1 ]; then
+if [ "$#" ==  0 ]; then
  usage
  exit
 fi
