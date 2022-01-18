@@ -15,7 +15,7 @@ nowherman()
 
 ogbon
 {
- nvcc -I/opt/share/openmpi/4.0.5-cuda/include -L/opt/share/openmpi/4.0.5-cuda/lib64 -DprintLabel -lnccl -lmpi -Xcompiler -fopenmp ping-pong-CUDA-AWARE-MPI.cu -o ping-pong-CUDA-AWARE-MPI
+ nvcc -I/opt/share/openmpi/4.1.0-cuda/include -L/opt/share/openmpi/4.1.0-cuda/lib64 -DprintLabel -lnccl -lmpi -Xcompiler -fopenmp ping-pong-CUDA-AWARE-MPI.cu -o ping-pong-CUDA-AWARE-MPI
 }
 
 #args in comand line
@@ -24,7 +24,7 @@ if [ "$#" ==  1 ]; then
  exit
 fi
 
-#airis
+#nowherman
 if [[ $1 == "nowherman" ]];then
  nowherman
 fi
