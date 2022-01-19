@@ -17,6 +17,12 @@ ogbon()
  sbatch slurm-CUDA-AWARE-MPI.sh
 }
 
+ogbon-1node-2GPUs-NVLINK()
+{
+ module load openmpi/4.1.1-cuda
+ mpirun -np 2 -x UCX_MEMTYPE_CACHE=n  -mca pml ucx -mca btl ^vader,tcp,openib,smcuda -x UCX_NET_DEVICES=mlx5_0:1  ./ping-pong-CUDA-AWARE-MPI
+}
+
 #args in comand line
 if [ "$#" ==  0 ]; then
  usage
