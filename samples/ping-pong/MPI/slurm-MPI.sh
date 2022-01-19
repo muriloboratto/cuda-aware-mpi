@@ -2,10 +2,10 @@
 
 #SBATCH --job-name=MPI                         # Job name
 #SBATCH --nodes=2                              # Run all processes on 2 nodes  
-#SBATCH --partition=CPUlongB                   # partition OGBON
+#SBATCH --partition=CPUlongB                   # Partition OGBON
 #SBATCH --output=out_%j.log                    # Standard output and error log
 #SBATCH --ntasks-per-node=1                    # 1 job per node
-#SBATCH --account=cenpes-lde
+#SBATCH --account=cenpes-lde                   # Account of the group 
 
 module load openmpi/4.1.1-cuda
 
