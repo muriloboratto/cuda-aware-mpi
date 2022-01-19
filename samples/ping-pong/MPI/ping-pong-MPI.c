@@ -19,12 +19,9 @@
 %   bash howtocompile.sh <supercomputer: nowherman | ogbon >
 %   bash howtocompile.sh ogbon
 %
-%  HowtoExecute in 1 node: 
-%   bash howtoexecute.sh <supercomputer: nowherman | ogbon >
-%   bash howtoexecute.sh ogbon
-%
-%  HowtoExecute in 2 nodes with SLURM: 
-%   sbash slurm-MPI.sh 
+%  HowtoExecute: 
+%   bash howtocompile.sh <supercomputer: nowherman | ogbon >
+%   bash howtocompile.sh ogbon
 %
 %****************************************************************************80*/
 
