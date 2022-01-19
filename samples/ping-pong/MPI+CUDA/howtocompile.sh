@@ -15,6 +15,7 @@ nowherman()
 
 ogbon()
 {
+ module load openmpi/4.1.1-cuda   
  nvcc -I/opt/share/openmpi/4.1.1-cuda/include -L/opt/share/openmpi/4.1.1-cuda/lib64 -DprintLabel -lnccl -lmpi -Xcompiler -fopenmp -o ping-pong-MPI-CUDA ping-pong-MPI-CUDA.cu
 }
 
