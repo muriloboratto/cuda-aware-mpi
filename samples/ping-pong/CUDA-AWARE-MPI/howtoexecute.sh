@@ -17,7 +17,7 @@ ogbon()
  sbatch slurm-CUDA-AWARE-MPI.sh
 }
 
-ogbon-1node-2GPUs-NVLINK()
+nvlink()
 {
  module load openmpi/4.1.1-cuda
  mpirun -np 2 -x UCX_MEMTYPE_CACHE=n  -mca pml ucx -mca btl ^vader,tcp,openib,smcuda -x UCX_NET_DEVICES=mlx5_0:1  ./ping-pong-CUDA-AWARE-MPI
@@ -34,8 +34,13 @@ if [[ $1 == "nowherman" ]];then
  nowherman
 fi
 
-
 #ogbon
 if [[ $1 == "ogbon" ]];then
  ogbon
 fi
+
+#nvlink
+if [[ $1 == "nvlink" ]];then
+ nvlink
+fi
+
