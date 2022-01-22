@@ -20,8 +20,8 @@
 %   bash howtocompile.sh ogbon
 %
 %  HowtoExecute: 
-%   bash howtocompile.sh <supercomputer: nowherman | ogbon >
-%   bash howtocompile.sh ogbon
+%   bash howtoexecute.sh <supercomputer: nowherman | ogbon >
+%   bash howtoexecute.sh ogbon
 %
 %****************************************************************************80*/
 
