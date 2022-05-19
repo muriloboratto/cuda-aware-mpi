@@ -2,7 +2,7 @@
 
 #SBATCH --job-name=CUDA-AWARE-MPI              # Job name
 #SBATCH --nodes=2                              # Run all processes on 2 nodes  
-#SBATCH --partition=GPUlongB                   # Partition OGBON
+#SBATCH --partition=gpulongb                   # Partition OGBON
 #SBATCH --output=out_%j.log                    # Standard output and error log
 #SBATCH --ntasks-per-node=1                    # 1 job per node
 #SBATCH --account=cenpes-lde                   # Account of the group 
